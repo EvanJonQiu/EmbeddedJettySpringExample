@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties>
+    <property name="dialect" value="sqlite" />
+    <property name="pageSqlId" value=".*Page$" />
+  </properties>
+	
+  <typeAliases>
+    <typeAlias alias="UnitOBDDetailMid" type="com.study.EmbeddedJettySpringExample.model.UnitOBDDetailMid"/>
+  </typeAliases>
+
+  <plugins>
+	<plugin interceptor="com.study.EmbeddedJettySpringExample.util.PageInterceptor"></plugin>
+  </plugins>
+
+</configuration>
