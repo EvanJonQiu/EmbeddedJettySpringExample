@@ -5,13 +5,14 @@ An example of embedded Jetty with Spring. It demostrates how to create a standal
 1. There is not database in the example. You should use your database and create a database by yourself before run it.
 To create table as following stetment:
 ```
-CREATE TABLE "WEBGIS_UNIT_OBD_DETAIL_MID" (
-	`CITY_ID`	NUMERIC NOT NULL,
-	`COMMUNITY_ADDR_ID`	NUMERIC NOT NULL,
-	`COMMUNITY_DETAILNAME`	TEXT NOT NULL,
-	`TERMID`	NUMERIC,
-	`TERMNAME`	TEXT
-)
+CREATE TABLE `webgis_unit_obd_detail_mid` (
+  `CITY_ID` int(11) NOT NULL,
+  `COMMUNITY_ADDR_ID` int(11) NOT NULL,
+  `COMMUNITY_DETAILNAME` varchar(256) NOT NULL,
+  `TERMID` int(11) DEFAULT NULL,
+  `TERMNAME` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`CITY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 ```
 2. Config your database in applicationContext.xml (My database is oracle)
 

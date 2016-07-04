@@ -12,6 +12,6 @@
   </resultMap>
   
   <select id="getAllDataByCityId" parameterType="java.lang.String" resultMap="resultList">
-  	select * from WEBGIS_UNIT_OBD_DETAIL_MID where city_id = #{cityId} and community_addr_id = 1000001666994
+  	select * from WEBGIS_UNIT_OBD_DETAIL_MID
   </select>
 </mapper>
