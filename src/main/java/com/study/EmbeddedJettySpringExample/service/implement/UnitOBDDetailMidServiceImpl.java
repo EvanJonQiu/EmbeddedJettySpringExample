@@ -3,6 +3,7 @@ package com.study.EmbeddedJettySpringExample.service.implement;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.study.EmbeddedJettySpringExample.mapper.IUnitOBDDetailMidDAO;
@@ -15,6 +16,7 @@ public class UnitOBDDetailMidServiceImpl implements IUnitOBDDetailMidService {
 	@Autowired
 	private IUnitOBDDetailMidDAO unitOBDDetailMidDAO;
 
+	@Cacheable(value="baseCache")
 	public Collection<UnitOBDDetailMid> getAllDataByCityId(String cityId) {
 		return unitOBDDetailMidDAO.getAllDataByCityId(cityId);
 	}
