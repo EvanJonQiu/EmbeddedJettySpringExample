@@ -32,4 +32,16 @@ public class TestController {
 	public Collection<UnitOBDDetailMid> getAllDataByCityId() {
 		return unitOBDDetailMidService.getAllDataByCityId("419");
 	}
+	
+	/**
+	 * Update a record
+	 * @param data
+	 * @return the updated data
+	 */
+	@RequestMapping(value = "/updateData")
+	@ResponseBody
+	public UnitOBDDetailMid updateByCityId(UnitOBDDetailMid data) {
+		unitOBDDetailMidService.updateByCityId(data);
+		return data;
+	}
 }

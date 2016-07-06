@@ -14,4 +14,23 @@
   <select id="getAllDataByCityId" parameterType="java.lang.String" resultMap="resultList">
   	select * from WEBGIS_UNIT_OBD_DETAIL_MID
   </select>
+  
+  <update id="updateByCityId" parameterType="UnitOBDDetailMid">
+  	update WEBGIS_UNIT_OBD_DETAIL_MID
+  	<set>
+  		<if test="communityAddrId != null">
+  			COMMUNITY_ADDR_ID = #{communityAddrId},
+  		</if>
+  		<if test="communityDetailName != null">
+  			COMMUNITY_DETAILNAME = #{communityDetailName},
+  		</if>
+  		<if test="termId != null">
+  			TERMID = #{termId},
+  		</if>
+  		<if test="termName != null">
+  			TERMNAME = #{termName}
+  		</if>
+  	</set>
+  	where CITY_ID = #{cityId}
+  </update>
 </mapper>
