@@ -17,6 +17,7 @@
 	<spring.version>4.2.5.RELEASE</spring.version>
 	<slf4j.version>1.7.19</slf4j.version>
 	<jdk.version>1.8</jdk.version>
+	<aspect.version>1.8.9</aspect.version>
   </properties>
 
   <dependencies>
@@ -60,6 +61,11 @@
 	<dependency>
 	  <groupId>org.springframework</groupId>
 	  <artifactId>spring-webmvc</artifactId>
+	  <version>${spring.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-aop</artifactId>
 	  <version>${spring.version}</version>
 	</dependency>
 	<dependency>
@@ -130,6 +136,17 @@
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-ehcache</artifactId>
       <version>1.0.0</version>
+	</dependency>
+	<!-- aspect -->
+	<dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspect.version}</version>
+	</dependency>
+	<dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspect.version}</version>
 	</dependency>
   </dependencies>
   

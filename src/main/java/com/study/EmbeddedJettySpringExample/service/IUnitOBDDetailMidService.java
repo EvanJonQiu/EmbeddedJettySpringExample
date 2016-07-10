@@ -10,4 +10,8 @@ public interface IUnitOBDDetailMidService {
 	public Collection<UnitOBDDetailMid> getAllDataByCityId(String cityId);
 	
 	public void updateByCityId(UnitOBDDetailMid data);
+	
+	public void getException() throws IllegalArgumentException;
+	
+	public void getAround();
 }

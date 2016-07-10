@@ -24,12 +24,14 @@ public class TestController {
 	@RequestMapping(value = "/testResult", method = RequestMethod.GET)
 	@ResponseBody
 	public String testResult() {
+		logger.debug("TestController.testResult");
 		return "Hello World";
 	}
 	
 	@RequestMapping(value = "/getData", method = RequestMethod.GET)
 	@ResponseBody
 	public Collection<UnitOBDDetailMid> getAllDataByCityId() {
+		logger.debug("TestController.getAllDataByCityId");
 		return unitOBDDetailMidService.getAllDataByCityId("419");
 	}
 	
@@ -41,7 +43,27 @@ public class TestController {
 	@RequestMapping(value = "/updateData")
 	@ResponseBody
 	public UnitOBDDetailMid updateByCityId(UnitOBDDetailMid data) {
+		logger.debug("TestController.updateByCityId");
 		unitOBDDetailMidService.updateByCityId(data);
 		return data;
+	}
+	
+	@RequestMapping(value="/getException")
+	@ResponseBody
+	public void getException() {
+		logger.debug("TestController.getException");
+		try {
+			unitOBDDetailMidService.getException();
+		} catch (IllegalArgumentException ex) {
+			throw ex;
+		}
+	}
+	
+	@RequestMapping(value="/getAround")
+	@ResponseBody
+	public String getAround() {
+		logger.debug("TestController.getAround");
+		unitOBDDetailMidService.getAround();
+		return "around";
 	}
 }
