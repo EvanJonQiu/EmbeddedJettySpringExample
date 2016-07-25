@@ -13,6 +13,17 @@ CREATE TABLE `webgis_unit_obd_detail_mid` (
   `TERMNAME` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`CITY_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+CREATE TABLE `foo_info` (
+  `ID` varchar(32) NOT NULL,
+  `NAME` varchar(64) NOT NULL,
+  `CREATE_USERNAME` varchar(64) NOT NULL,
+  `CREATE_TIME` datetime NOT NULL,
+  `MODIFY_USERNAME` varchar(64) DEFAULT NULL,
+  `MODIFY_TIME` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
 ```
 2. Config your database in applicationContext.xml (My database is oracle)
 

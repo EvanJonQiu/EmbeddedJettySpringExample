@@ -9,6 +9,7 @@
 	
   <typeAliases>
     <typeAlias alias="UnitOBDDetailMid" type="com.study.EmbeddedJettySpringExample.model.UnitOBDDetailMid"/>
+    <typeAlias alias="FooInfo" type="com.study.EmbeddedJettySpringExample.model.FooInfo"/>
   </typeAliases>
 
   <plugins>

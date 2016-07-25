@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.EmbeddedJettySpringExample.mapper.IFooInfoDAO">
+  <resultMap type="FooInfo" id="resultList">
+    <result column="ID" property="id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="NAME" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="CREATE_USERNAME" property="createUsername" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+    <result column="MODIFY_USERNAME" property="modifyUsername" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp"/>
+  </resultMap>
+  
+  <insert id="createFooInfo" parameterType="FooInfo">
+    <selectKey keyProperty="id" resultType="String" order="BEFORE">  
+      select  replace(uuid(),'-','')   from dual  
+    </selectKey>
+  	insert into foo_info(id, name, create_username, create_time)
+  	values(#{id}, #{name}, #{createUsername}, #{createTime})
+  </insert>
+  <update id="updateFooInfo" parameterType="FooInfo">
+    update foo_info set name=#{name}, modify_username=#{modifyUsername}, modify_time=#{modifyTime} where id=#{id}
+  </update>
+</mapper>
