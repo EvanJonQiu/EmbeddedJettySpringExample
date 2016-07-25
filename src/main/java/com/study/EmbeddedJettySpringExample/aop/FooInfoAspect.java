@@ -31,7 +31,7 @@ public class FooInfoAspect {
 		if (createOption) {
 			Object ao = joinPoint.getArgs()[0];
 			if (ao != null) {
-				setOperationFieldData(ao, "admin");
+				setCreateOperationFieldData(ao, "admin");
 			}
 		}
 	}
@@ -48,43 +48,81 @@ public class FooInfoAspect {
 		if (updateOption) {
 			Object ao = joinPoint.getArgs()[0];
 			if (ao != null) {
-				setOperationFieldData(ao, "modify_user");
+				setUpdateOperationFieldData(ao, "modify_user");
 			}
 		}
 	}
 	
-	private void setOperationFieldData(Object obj, String username) {
+	private void setCreateOperationFieldData(Object obj, String username) {
 		Class<?> clazz = obj.getClass();
 		for (; clazz != Object.class; clazz = clazz.getSuperclass()) {
 			Field[] fields = clazz.getDeclaredFields();
 			for (Field field : fields) {
 				if ("createUsername".equals(field.getName())) {
-					field.setAccessible(true);
+					boolean isAccessible = field.isAccessible();
+					if (!isAccessible) {
+						field.setAccessible(true);
+					}
 					try {
-						field.set(obj, "admin");
+						field.set(obj, username);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
+					} finally {
+						if (!isAccessible) {
+							field.setAccessible(false);
+						}
 					}
 				} else if ("createTime".equals(field.getName())) {
-					field.setAccessible(true);
+					boolean isAccessible = field.isAccessible();
+					if (!isAccessible) {
+						field.setAccessible(true);
+					}
 					try {
 						field.set(obj, new Timestamp(new Date().getTime()));
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
+					} finally {
+						if (!isAccessible) {
+							field.setAccessible(false);
+						}
 					}
-				} else if ("modifyUsername".equals(field.getName())) {
-					field.setAccessible(true);
+				}
+			}
+		}
+	}
+	
+	private void setUpdateOperationFieldData(Object obj, String username) {
+		Class<?> clazz = obj.getClass();
+		for (; clazz != Object.class; clazz = clazz.getSuperclass()) {
+			Field[] fields = clazz.getDeclaredFields();
+			for (Field field : fields) {
+				if ("modifyUsername".equals(field.getName())) {
+					boolean isAccessible = field.isAccessible();
+					if (!isAccessible) {
+						field.setAccessible(true);
+					}
 					try {
-						field.set(obj, "modify_user");
+						field.set(obj, username);
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
+					} finally {
+						if (!isAccessible) {
+							field.setAccessible(false);
+						}
 					}
 				} else if ("modifyTime".equals(field.getName())) {
-					field.setAccessible(true);
+					boolean isAccessible = field.isAccessible();
+					if (!isAccessible) {
+						field.setAccessible(true);
+					}
 					try {
 						field.set(obj, new Timestamp(new Date().getTime()));
 					} catch (IllegalArgumentException | IllegalAccessException e) {
 						e.printStackTrace();
+					} finally {
+						if (!isAccessible) {
+							field.setAccessible(false);
+						}
 					}
 				}
 			}
