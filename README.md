@@ -24,6 +24,18 @@ CREATE TABLE `foo_info` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
 
+CREATE TABLE `tree_table` (
+  `ID` VARCHAR(32) NOT NULL,
+  `NAME` VARCHAR(45) NOT NULL,
+  `LEVEL1_ID` VARCHAR(32) NULL,
+  `LEVEL2_ID` VARCHAR(32) NULL,
+  `LEVEL3_ID` VARCHAR(32) NULL,
+  `LEVEL` INT NULL,
+  `PARENT_ID` VARCHAR(32) NULL,
+  `ORDER_ID` INT NULL,
+  PRIMARY KEY (`ID`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
 ```
 2. Config your database in applicationContext.xml (My database is oracle)
 

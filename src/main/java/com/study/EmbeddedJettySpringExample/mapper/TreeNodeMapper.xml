@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.EmbeddedJettySpringExample.mapper.ITreeNodeDAO">
+  <resultMap type="TreeNode" id="resultList">
+    <result column="ID" property="id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="NAME" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="LEVEL1_ID" property="level1Id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="LEVEL2_ID" property="level2Id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="LEVEL3_ID" property="level3Id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="LEVEL" property="level" jdbcType="NUMERIC" javaType="java.lang.Integer"/>
+    <result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    <result column="ORDER_ID" property="orderId" jdbcType="NUMERIC" javaType="java.lang.Integer"/>
+  </resultMap>
+  
+  <select id="queryTreeNodeById" parameterType="java.lang.String" resultMap="resultList">
+    select id, name, level1_id, level2_id, level3_id, level, parent_id, order_id
+    from tree_table where 1=1 and id = #{id} 
+  </select>
+  <select id="queryChildTreeNodesById" resultMap="resultList">
+    select id, name, level1_id, level2_id, level3_id, level, parent_id, order_id
+    from tree_table where 1=1 and parent_id = #{id} and level = #{childLevel}
+  </select>
+</mapper>

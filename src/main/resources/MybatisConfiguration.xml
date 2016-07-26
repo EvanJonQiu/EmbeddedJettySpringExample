@@ -10,6 +10,7 @@
   <typeAliases>
     <typeAlias alias="UnitOBDDetailMid" type="com.study.EmbeddedJettySpringExample.model.UnitOBDDetailMid"/>
     <typeAlias alias="FooInfo" type="com.study.EmbeddedJettySpringExample.model.FooInfo"/>
+    <typeAlias alias="TreeNode" type="com.study.EmbeddedJettySpringExample.model.TreeNode"/>
   </typeAliases>
 
   <plugins>
