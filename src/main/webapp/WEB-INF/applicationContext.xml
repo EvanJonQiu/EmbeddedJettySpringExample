@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		   http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
@@ -12,7 +12,9 @@
 		   http://www.springframework.org/schema/tx 
 		   http://www.springframework.org/schema/tx/spring-tx.xsd
 		   http://www.springframework.org/schema/cache     
-  		   http://www.springframework.org/schema/cache/spring-cache.xsd"
+  		   http://www.springframework.org/schema/cache/spring-cache.xsd
+  		   http://www.springframework.org/schema/mvc
+  		   http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 	default-autowire="byName">
 
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -44,13 +46,20 @@
   <context:component-scan base-package="com.study">
   </context:component-scan>
   
-  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+  <!-- for spring 4.x
+  <bean class="org.springframework.web.servlet.mvc.annotation.RequestMappingHandlerAdapter">
     <property name="messageConverters">
       <list>
         <bean class="org.springframework.http.converter.json.GsonHttpMessageConverter"/>
       </list>
     </property>
   </bean>
+  -->
+  <mvc:annotation-driven>
+  	<mvc:message-converters>
+  		<bean class="org.springframework.http.converter.json.GsonHttpMessageConverter"/>
+  	</mvc:message-converters>
+  </mvc:annotation-driven>
   
   <!-- ehcache -->
   <cache:annotation-driven cache-manager="cacheManager"/>
