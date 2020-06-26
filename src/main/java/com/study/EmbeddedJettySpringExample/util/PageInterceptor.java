@@ -28,7 +28,7 @@ import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
 
-@Intercepts({@Signature(type =StatementHandler.class, method = "prepare", args ={Connection.class})})  
+@Intercepts({@Signature(type =StatementHandler.class, method = "prepare", args ={Connection.class, Integer.class})})  
 public class PageInterceptor implements Interceptor {
 	private static final Log logger = LogFactory.getLog(PageInterceptor.class);
     private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
