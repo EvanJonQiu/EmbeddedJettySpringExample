@@ -2,11 +2,19 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+  
   <properties>
     <property name="dialect" value="mysql" />
     <property name="pageSqlId" value=".*Page$" />
   </properties>
-	
+  
+  <!-- mybatis 2th level cache -->
+  <!-- 
+  <settings>
+    <setting name="cacheEnabled" value="true"/>
+  </settings>
+   -->
+  
   <typeAliases>
     <typeAlias alias="UnitOBDDetailMid" type="com.study.EmbeddedJettySpringExample.model.UnitOBDDetailMid"/>
     <typeAlias alias="FooInfo" type="com.study.EmbeddedJettySpringExample.model.FooInfo"/>

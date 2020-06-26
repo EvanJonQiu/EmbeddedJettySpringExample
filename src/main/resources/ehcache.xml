@@ -6,20 +6,24 @@
     <diskStore path="java.io.tmpdir"/>
 
     <defaultCache eternal="false"
+                  maxElementsInMemory='10000'
                   maxEntriesLocalHeap="1000"
                   overflowToDisk="false"
                   diskPersistent="false"
                   timeToIdleSeconds="3600"
-                  timeToLiveSeconds="3600"/>
+                  timeToLiveSeconds="3600"
+                  diskExpiryThreadIntervalSeconds='100'
+                  memoryStoreEvictionPolicy="LRU"/>
 
     <cache name="baseCache"
            eternal="false"
+           maxElementsInMemory="3000"
            maxEntriesLocalHeap="200"
            overflowToDisk="false"
            diskPersistent="false"
            timeToIdleSeconds="600"
-           statistics="true"
-           timeToLiveSeconds="600"/>
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"/>
            
     <cache name="treeNodeCache"
            eternal="false"
@@ -27,8 +31,8 @@
            overflowToDisk="false"
            diskPersistent="false"
            timeToIdleSeconds="600"
-           statistics="true"
-           timeToLiveSeconds="600"/>
+           timeToLiveSeconds="600"
+           memoryStoreEvictionPolicy="LFU"/>
 
     <!--
         eternal="false"   // 元素是否永恒,如果是就永不过期(必须设置)
