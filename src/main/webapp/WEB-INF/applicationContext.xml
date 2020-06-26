@@ -62,6 +62,7 @@
   </mvc:annotation-driven>
   
   <!-- ehcache -->
+  <!--
   <cache:annotation-driven cache-manager="cacheManager"/>
   
   <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
@@ -72,6 +73,7 @@
     <property name="cacheManager" ref="ehcacheManager"/>
     <property name="transactionAware" value="true"/>
   </bean>
+  -->
   
   <!-- aop -->
   <aop:aspectj-autoproxy />
