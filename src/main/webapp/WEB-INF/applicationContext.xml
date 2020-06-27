@@ -17,6 +17,8 @@
   		   http://www.springframework.org/schema/mvc/spring-mvc.xsd"
 	default-autowire="byName">
 
+  <!-- mysql -->
+  <!-- 
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName">
 	  <value>com.mysql.cj.jdbc.Driver</value>
@@ -30,6 +32,22 @@
 	<property name="password">
 	  <value>root</value>
 	</property>
+  </bean>
+   -->
+  
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName">
+      <value>org.postgresql.Driver</value>
+    </property>
+    <property name="url">
+      <value>jdbc:postgresql://localhost:5432/test</value>
+    </property>
+    <property name="username">
+      <value>test</value>
+    </property>
+    <property name="password">
+      <value>test</value>
+    </property>
   </bean>
   
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
